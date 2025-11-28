@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jualissa <jualissa@student.42.fr>          #+#  +:+       +#+        */
+/*   By: yourlogin <youremail@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-09-30 11:29:50 by jualissa          #+#    #+#             */
-/*   Updated: 2025-09-30 11:29:50 by jualissa         ###   ########.fr       */
+/*   Created: 2025/11/28 13:57:54 by yourlogin         #+#    #+#             */
+/*   Updated: 2025/11/28 13:57:54 by yourlogin        ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "poulet.h"
+#include "pipex.h"
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {

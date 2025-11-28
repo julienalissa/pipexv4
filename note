@@ -53,3 +53,9 @@ fils
 	p_pipe[1]
 	n_pipe[0]
 	n_pipe[1]
+
+
+	gerer les free si execve echoue check le valgrind
+	checker les comamndes et le path dans le process parent
+	checker les cas exemples > /bin/ls .... /bin/ls -l
+	les grep 'a' entre crochet

@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yourlogin <youremail@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/27 07:29:34 by yourlogin         #+#    #+#             */
-/*   Updated: 2025/11/27 07:29:34 by yourlogin        ###   ########.ch       */
+/*   Created: 2025/11/28 13:58:10 by yourlogin         #+#    #+#             */
+/*   Updated: 2025/11/28 13:58:10 by yourlogin        ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "poulet.h"
+#include "pipex.h"
 
 char	*get_buffer(char *buffer, int fd)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jualissa <jualissa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yourlogin <youremail@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 11:28:21 by jualissa          #+#    #+#             */
-/*   Updated: 2025/10/02 23:06:30 by jualissa         ###   ########.fr       */
+/*   Created: 2025/11/28 13:57:27 by yourlogin         #+#    #+#             */
+/*   Updated: 2025/11/28 13:57:27 by yourlogin        ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "poulet.h"
+#include "pipex.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {

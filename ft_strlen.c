@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jualissa <jualissa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yourlogin <youremail@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 11:29:25 by jualissa          #+#    #+#             */
-/*   Updated: 2025/09/30 19:26:38 by jualissa         ###   ########.fr       */
+/*   Created: 2025/11/28 13:57:49 by yourlogin         #+#    #+#             */
+/*   Updated: 2025/11/28 13:57:49 by yourlogin        ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "poulet.h"
+#include "pipex.h"
 
 size_t	ft_strlen(const char *str)
 {
