@@ -43,8 +43,21 @@ char	*get_path(char *cmd, char **env)
 	char	*tmp;
 	int		i;
 
-	if (access(cmd, F_OK | X_OK) == 0)
-		return (cmd);
+	if (ft_strchr(cmd, '/') != NULL)
+	{
+		if (access(cmd, F_OK | X_OK) == 0)
+			return (ft_strdup(cmd));
+		if (cmd[0] != '/')
+		{
+			tmp = ft_strjoin("/", cmd);
+			if (!tmp)
+				return (NULL);
+			if (access(tmp, F_OK | X_OK) == 0)
+				return (tmp);
+			free(tmp);
+		}
+		return (NULL);
+	}
 	path = ft_split(my_getenv("PATH", env), ':');
 	if (!path)
 		return (NULL);

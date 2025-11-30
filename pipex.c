@@ -12,6 +12,29 @@
 
 #include "pipex.h"
 
+void	ft_remove_quote(char **argv_cmd)
+{
+	int		i;
+	int		len;
+	char	*str;
+
+	i = 0;
+	while (argv_cmd[i])
+	{
+		str = argv_cmd[i];
+		len = ft_strlen(str);
+		if (len >= 2 && ((str[0] == '\'' && str[len -1] == '\'') || (str[0] == '"' && str[len - 1] == '"')))
+		{
+			argv_cmd[i] = ft_substr(str, 1, len -2);
+			free(str);
+		}
+		i++;
+	}
+
+
+}
+
+
 int	ft_heredoc(char *delimiter)
 {
 	char	*line;
@@ -130,7 +153,13 @@ int	main(int argc, char **argv, char **environ)
 			}
 			ft_close_files_and_n_pipe(&value);
 			value.argv_cmd = ft_split(argv[value.i], ' ');
+			ft_remove_quote(value.argv_cmd);
 			value.path = get_path(value.argv_cmd[0], value.env);
+			if (!value.path)
+			{
+				perror("path");// sur le parent close n_pipe 0 et 1 et f1 et f2
+				exit(1);
+			}
 			execve(value.path, value.argv_cmd, value.env);
 			perror("execeve");
 
@@ -184,7 +213,13 @@ int	main(int argc, char **argv, char **environ)
 				ft_close_prev_and_n_pipe(&value);
 
 				value.argv_cmd = ft_split(argv[value.i], ' ');
+				ft_remove_quote(value.argv_cmd);
 				value.path = get_path(value.argv_cmd[0], value.env);
+				if (!value.path)
+				{
+					perror("path");// sur le parent close n_pipe 0 et 1 et f1 et f2
+					exit(1);
+				}
 				execve(value.path, value. argv_cmd, value.env);
 				exit(1);
 			}
@@ -219,8 +254,14 @@ int	main(int argc, char **argv, char **environ)
 		}
 		ft_close_prev_files(&value);
 		value.argv_cmd = ft_split(argv[argc - 2] , ' ');
+		ft_remove_quote(value.argv_cmd);
 		value.path = get_path(value.argv_cmd[0], value.env);
-		execve(value.path, value.argv_cmd, value.env);
+		if (!value.path)
+		{
+			perror("path");// sur le parent close n_pipe 0 et 1 et f1 et f2
+			exit(1);
+		}
+	execve(value.path, value.argv_cmd, value.env);
 		exit(1);
 	}
 	ft_close_prev_files(&value);
