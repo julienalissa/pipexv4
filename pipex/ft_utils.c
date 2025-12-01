@@ -23,7 +23,8 @@ void	ft_remove_quote(char **argv_cmd)
 	{
 		str = argv_cmd[i];
 		len = ft_strlen(str);
-		if (len >= 2 && ((str[0] == '\'' && str[len -1] == '\'') || (str[0] == '"' && str[len - 1] == '"')))
+		if (len >= 2 && ((str[0] == '\'' && str[len -1] == '\'')
+				|| (str[0] == '"' && str[len - 1] == '"')))
 		{
 			argv_cmd[i] = ft_substr(str, 1, len -2);
 			free(str);
