@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/wait.h>
+# include <errno.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 5

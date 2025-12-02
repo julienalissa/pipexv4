@@ -43,19 +43,18 @@ void	ft_define_value(t_list *value, int argc, char **argv, char **environ)
 			O_WRONLY | O_CREAT | O_APPEND, 0777);
 	if (value->fd_file2 == -1)
 	{
-		close(value->fd_file1);
 		perror("file2");
 		exit(1);
 	}
 	if (ft_strncmp(argv[1], "here_doc", 9) == 0)
-		execute_here_doc(&(*value), argv, argc);
+		execute_here_doc(value, argv, argc);
 	else
 	{
 		value->fd_file1 = open(argv[1], O_RDONLY);
 		if (value->fd_file1 == -1)
 		{
 			perror("file1");
-			exit (1);
+			value->fd_file1 = open("/dev/null", O_RDONLY);
 		}
 		value->i = 2;
 		value->nb_cmd = argc - 3;

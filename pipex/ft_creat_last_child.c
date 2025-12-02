@@ -52,14 +52,14 @@ void	ft_process_last_fork(t_list *value)
 		{
 			perror("path");
 			ft_free_str(value->argv_cmd);
-			exit(1);
+			exit(127);
 		}
 		if (execve(value->path, value->argv_cmd, value->env) == -1)
 		{
 			free(value->path);
 			ft_free_str(value->argv_cmd);
 			perror("execeve");
-			exit(1);
+			exit(126);
 		}
 	}
 }
@@ -68,14 +68,17 @@ void	ft_creat_last_child(t_list *value)
 {
 	int	index;
 
-	index = 0;
+	index = -1;
 	ft_fork_it(value);
 	ft_process_last_fork(value);
 	ft_close_prev_files(value);
-	value->nb_cmd++;
-	while (index < value->nb_cmd)
+	while (index <= value->nb_cmd)
 	{
 		wait(&value->status);
 		index = index + 1;
 	}
+	if (WIFEXITED(value->status))
+		exit(WEXITSTATUS(value->status));
+	else
+		exit(1);
 }

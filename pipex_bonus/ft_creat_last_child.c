@@ -50,16 +50,16 @@ void	ft_process_last_fork(t_list *value)
 		value->path = get_path(value->argv_cmd[0], value->env);
 		if (!value->path)
 		{
-			perror("path");
 			ft_free_str(value->argv_cmd);
-			exit(1);
+			perror("path");
+			exit(127);
 		}
 		if (execve(value->path, value->argv_cmd, value->env) == -1)
 		{
 			free(value->path);
 			ft_free_str(value->argv_cmd);
-			perror("execeve");
-			exit(1);
+			perror("execve");
+			exit(126);
 		}
 	}
 }
@@ -74,7 +74,11 @@ void	ft_creat_last_child(t_list *value)
 	ft_close_prev_files(value);
 	while (index <= value->nb_cmd)
 	{
-		wait(NULL);
+		wait(&value->status);
 		index++;
 	}
+	if (WIFEXITED(value->status))
+		exit(WEXITSTATUS(value->status));
+	else
+		exit(1);
 }

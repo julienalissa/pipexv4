@@ -39,22 +39,21 @@ void	ft_define_value(t_list *value, int argc, char **argv, char **environ)
 	value->env = environ;
 	value->argc = argc;
 	value->argv_cmd = NULL;
+	value->fd_file2 = open(argv[argc - 1],
+		O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	if (value->fd_file2 == -1)
+	{
+		perror("file2");
+		exit(1);
+	}
 	value->fd_file1 = open(argv[1], O_RDONLY);
 	if (value->fd_file1 == -1)
 	{
 		perror("file1");
-		exit (1);
+		value->fd_file1 = open("/dev/null", O_RDONLY);
 	}
 	value->i = 2;
 	value->nb_cmd = argc - 3;
-	value->fd_file2 = open(argv[argc - 1],
-			O_WRONLY | O_CREAT | O_TRUNC, 0777);
-	if (value->fd_file2 == -1)
-	{
-		close(value->fd_file1);
-		perror("file2");
-		exit(1);
-	}
 }
 
 void	ft_check_less_five_arg(int argcc)
